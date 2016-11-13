@@ -1,6 +1,7 @@
 *.swp
 Temp/
 Library/
-Assembly-CSharp.csproj
+/Assembly-CSharp.csproj
 **/Temp/
 **/Library/
+*.meta
