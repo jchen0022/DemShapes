@@ -1,7 +1,9 @@
 *.swp
 Temp/
 Library/
+Assets/Sprites/
 /Assembly-CSharp.csproj
 **/Temp/
 **/Library/
+**/Assets/Sprites/
 *.meta
