@@ -2,10 +2,12 @@
 Temp/
 Library/
 Assets/Sprites/
+Assets/Textures/
 /Assembly-CSharp.csproj
 **/Temp/
 **/Library/
 **/Assets/Sprites/
+**/Assets/Textures/
 *.meta
 
 ExportedObj/
