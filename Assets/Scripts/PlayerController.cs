@@ -13,12 +13,15 @@ public class PlayerController : MonoBehaviour {
     private int countFood;
     private float baseColliderRadius;
     private CircleCollider2D collider;
+    private GameObject recentDrop;
+    public GameObject pair;
 
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         collider = gameObject.GetComponent<CircleCollider2D>();
         baseColliderRadius = collider.radius;
         countFood = 0;
+        recentDrop = null;
     }
 
     void Update() {
@@ -47,6 +50,24 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = new Vector3(scale, scale, scale);
             collider.radius = (float) (baseColliderRadius * (1 + 0.001 * countFood)); 
         }
+        if (other.gameObject.CompareTag("Circle Drop")) {
+            Debug.Log("connect");
+            if (other.gameObject.GetComponent<DropsScript>().time < 7.75) {
+                if (recentDrop == null) {
+                    recentDrop = other.gameObject; 
+                } else {
+                    connect(recentDrop, other.gameObject);
+                    recentDrop = other.gameObject;
+                }
+            }
+        }
+    }
+
+    void connect(GameObject drop1, GameObject drop2) {
+        Vector3 spawnPoint = transform.position;
+        GameObject p = Instantiate(pair, spawnPoint, Quaternion.identity) as GameObject;
+        p.gameObject.GetComponent<PairsContoller>().drop1 = drop1;
+        p.gameObject.GetComponent<PairsContoller>().drop2 = drop2;
     }
 
 }

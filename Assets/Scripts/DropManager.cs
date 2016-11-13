@@ -20,10 +20,10 @@ public class DropManager : MonoBehaviour {
             time -= Time.deltaTime;
             if (time <= 0) {
                 Spawn();
-                time = (float) 0.1;
+                time = (float) 0.15;
             } 
         } else {
-            time = 0;
+            time = (float) 0;
         }
 	}
 

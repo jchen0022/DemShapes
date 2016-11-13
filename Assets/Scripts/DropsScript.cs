@@ -3,11 +3,11 @@ using System.Collections;
 
 public class DropsScript : MonoBehaviour {
 
-    private float time;
+    public float time;
 
 	// Use this for initialization
 	void Start () {
-        time = 3;
+        time = 8;
 	}
 	
 	// Update is called once per frame
