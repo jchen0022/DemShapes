@@ -1,3 +1,4 @@
-**/Temp/
+Temp/
 *.swp
-**/Library/
+Library/
+Assembly-CSharp.csproj
