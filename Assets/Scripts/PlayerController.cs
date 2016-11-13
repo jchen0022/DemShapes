@@ -8,9 +8,14 @@ public class PlayerController : MonoBehaviour {
     
     public float speed;
     private Rigidbody2D rigidBody;
+    private bool isSpedUp;
 
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    void Update() {
+        isSpedUp = Input.GetKey("space");
     }
     
     void FixedUpdate() {
@@ -18,8 +23,12 @@ public class PlayerController : MonoBehaviour {
         float moveVeritcal = Input.GetAxisRaw("Vertical");
         
         Vector2 movement = new Vector2(moveHorizontal, moveVeritcal);
-
-        rigidBody.AddForce(movement * speed);
+        
+        if (isSpedUp) {
+            rigidBody.AddForce(movement * ((float)(speed * 1.75)));
+        } else {
+            rigidBody.AddForce(movement * speed);
+        }
     }
 
 }
