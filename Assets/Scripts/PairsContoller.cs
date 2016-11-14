@@ -5,15 +5,17 @@ public class PairsContoller : MonoBehaviour {
 
     public GameObject drop1;
     public GameObject drop2;
-    //public Color c1 = Color.black;
-    //public Color c2 = Color.black;
     private LineRenderer lineRenderer;
+    public Color c1 = Color.red;
+    public Color c2 = Color.blue;
 
 	// Use this for initialization
 	void Start () {
+        c1 = Color.yellow;
+        c2 = Color.green;
         lineRenderer = GetComponent<LineRenderer>();
-        //lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-        //lineRenderer.SetColors(c1, c2);
+        lineRenderer.material = new Material(Shader.Find("Particles/Alpha Blended"));
+        lineRenderer.SetColors(c1, c2);
         Vector3[] points = new Vector3[] {drop1.transform.position, drop2.transform.position};
         lineRenderer.SetPositions(points);
 	}
@@ -24,4 +26,8 @@ public class PairsContoller : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
+
+    void OnDestory() {
+        Destroy(this.GetComponent<Renderer>().material);
+    }
 }
